@@ -1,0 +1,85 @@
+:root {
+  --blue-color: #197278;
+  --red-color: #c44536;
+  --darkGreen-color: #283d3b;
+  --darkRed-color: #772e25;
+  --white-color: #edddd4;
+}
+
+/* Genel Sıfırlama */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Padding'lerin genişliği bozmaması için eklendi */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url("../images/campusCafe.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+h2 {
+  color: var(--darkGreen-color);
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+li,
+p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.entrance-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-color);
+  padding: 60px;
+  width: 400px;
+  height: 100vh;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+#student-login,
+#personnel-login {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 250px;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+label {
+  /* Renk uyarın üzerine: Arka plan krem ise koyu yeşil daha iyi okunabilir */
+  color: var(--darkGreen-color);
+  font-weight: bold;
+  align-self: flex-start;
+  margin-bottom: -5px;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  outline: none; /* Odaklanınca çıkan çizgiyi düzenlemek için */
+}

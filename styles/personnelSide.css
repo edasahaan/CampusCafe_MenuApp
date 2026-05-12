@@ -1,0 +1,419 @@
+:root {
+  --background-color: #121213;
+  --text-color: #15151d;
+  --text-white-color: #f4f1deb0;
+  --card-bg-color: #d8b15cdc;
+  --orderNum-bg-color: #f4f1de56;
+  --action-color: #c19355;
+  --action-active-color: #261b1b;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+  flex-direction: column;
+  font-family: "Courier New", Courier, monospace, Arial, sans-serif;
+  background-image: url(../images/personnel-menu-bg.png);
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-color);
+  cursor: default;
+}
+
+.top-bar {
+  width: 95%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+}
+
+#personnel-id-display {
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+.top-bar-btns {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 17px;
+  transition: 0.2s;
+}
+
+#product-btn {
+  background: #097c91;
+}
+
+#close-register-btn {
+  background: #f59e0b;
+}
+
+#logout-btn {
+  background: #ef4444;
+}
+
+#product-btn:hover,
+#close-register-btn:hover,
+#logout-btn:hover {
+  background: var(--action-active-color);
+}
+
+.orderScreen,
+.productScreen {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  padding: 30px 100px;
+  border-radius: 10px;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+/* Kanban Tahtası Düzeni */
+.kanban-board {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+/* Kolonlar (Glassmorphism - Buzlu Cam Efekti) */
+.kanban-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  /* Cam efekti ayarları */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  max-height: 80vh; /* Kolon ekranın %80'inden fazla uzayamaz */
+  overflow: hidden;
+  padding: 20px;
+  min-height: 60vh;
+  width: 400px;
+}
+
+.kanban-column h2 {
+  text-align: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;
+  margin: 0 auto 20px auto;
+  font-size: 1.5rem;
+  width: 80%;
+}
+
+/* Sipariş Kartları */
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  border-left: 4px solid #ed9277;
+  font-size: 1.05rem;
+  transition: transform 0.2s;
+}
+
+.order-item:hover {
+  transform: translateX(5px); /* Üzerine gelince hafif sağa kayma efekti */
+}
+
+/* Checkbox Estetiği */
+.order-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #9c1a15;
+}
+
+/* Aksiyon Butonları */
+.action-btn {
+  margin-top: auto;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgba(22, 104, 102, 0.9);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #ed9277;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(237, 146, 119, 0.4);
+}
+
+#pending-list,
+#preparing-list,
+#completed-list {
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 10px;
+  margin-bottom: 15px;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--action-color) rgba(4, 103, 21, 0.299);
+}
+
+/* --- Kaydırma Çubuğunun Estetiği (Custom Scrollbar) --- */
+#pending-list::-webkit-scrollbar,
+#preparing-list::-webkit-scrollbar,
+#completed-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+#pending-list::-webkit-scrollbar-track,
+#preparing-list::-webkit-scrollbar-track,
+#completed-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+#pending-list::-webkit-scrollbar-thumb,
+#preparing-list::-webkit-scrollbar-thumb,
+#completed-list::-webkit-scrollbar-thumb {
+  background: var(--action-color);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+#pending-list::-webkit-scrollbar-thumb:hover,
+#preparing-list::-webkit-scrollbar-thumb:hover,
+#completed-list::-webkit-scrollbar-thumb:hover {
+  background: var(--action-active-color);
+}
+
+/*product control screen*/
+
+.product-container {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+table,
+thead,
+tbody,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.product-list-btns {
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+table.product-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: auto !important;
+  margin-top: 20px;
+  background-color: transparent !important;
+  font-size: 20px;
+}
+
+.product-table thead th {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ed9277 !important;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+}
+
+.product-table tbody td {
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 12px 15px !important;
+  background: transparent !important;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Personel Sipariş Kartı Tasarımı */
+.order-card {
+  border: 2px solid var(--blue-color);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: white;
+  color: #333;
+  transition: transform 0.2s;
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-status-text {
+  font-weight: bold;
+  color: var(--red-color);
+}
+
+.order-details-text {
+  font-size: 0.9rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+.order-card-footer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-card hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 10px 0;
+}
+
+/* PRODUCT EKLEME */
+.add-product-form {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Input ve Select Alanları Ortak Tasarımı */
+#new-p-name,
+#new-p-price,
+#new-p-category {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 5px;
+  color: #e0e0e0;
+  padding: 12px 15px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  /* Esneklik sağlar */
+}
+
+/* Hover ve Focus (Tıklanma) Durumu */
+#new-p-name:focus,
+#new-p-price:focus,
+#new-p-category:focus {
+  border-color: #e65100;
+  /* Mevcut buton rengine yakın turuncu tonu */
+  box-shadow: 0 0 8px rgba(230, 81, 0, 0.4);
+  background-color: #252525;
+}
+
+/* Placeholder (İpucu Metni) Rengi */
+::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+/* Select (Dropdown) için Özel Dokunuş */
+#new-p-category {
+  cursor: pointer;
+  appearance: none;
+  /* Varsayılan ok işaretini kaldırıp modern bir tane ekleyebilirsin */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+/* Ekle Butonu Geliştirme */
+#add-product-btn {
+  background: linear-gradient(135deg, #c63d2f, #a12d22);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px !important;
+  /* HTML'deki inline padding'i ezmek için */
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition:
+    transform 0.2s,
+    background 0.3s;
+  white-space: nowrap;
+}
+
+#add-product-btn:hover {
+  background: linear-gradient(135deg, #e65100, #c63d2f);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(198, 61, 47, 0.4);
+}
+
+#add-product-btn:active {
+  transform: translateY(0);
+}
+
+/* Tablo içindeki inputlar için (Fiyat Güncelleme alanı) */
+.product-table input {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-align: center;
+}

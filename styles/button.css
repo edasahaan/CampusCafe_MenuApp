@@ -1,0 +1,79 @@
+:root {
+  --blue-color: #197278;
+  --red-color: #c44536;
+  --darkGreen-color: #283d3b;
+  --darkRed-color: #772e25;
+  --white-color: #edddd4;
+}
+
+/* Genel Buton Yapısı (Tüm butonlar için ortak) */
+button,
+.logIn-btn,
+.signUp-btn {
+  padding: 15px 50px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: var(--darkGreen-color);
+  transform: translateX(10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logIn-btn,
+.signUp-btn {
+  margin-top: 20px;
+  width: 100%;
+  background-color: var(--blue-color);
+}
+
+.student-register-btn,
+.personnel-register-btn {
+  margin-top: 20px;
+  width: 100%;
+  background-color: var(--red-color);
+}
+
+.student-register-btn:hover,
+.personnel-register-btn:hover {
+  background-color: var(--darkRed-color);
+}
+
+.chooseIdenty {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#personnel-btn {
+  background-color: var(--red-color);
+}
+
+#personnel-btn:hover {
+  background-color: var(--darkRed-color);
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  background-color: var(--darkGreen-color);
+  padding: 10px;
+  cursor: pointer;
+  color: var(--blue-color);
+  font-weight: bold;
+  align-self: flex-start; /* Sola yasla */
+  margin-bottom: 10px;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
