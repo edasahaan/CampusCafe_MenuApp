@@ -1,7 +1,4 @@
-// js/menu-orderControl.js
-/**
- * Sepetteki ürünleri ve seçilen özelleştirmeleri save_order.php'ye gönderir.
- */
+// Sepetteki ürünleri ve seçilen özelleştirmeleri save_order.php'ye gönderir.
 async function finalizeOrder() {
   // Güvenlik kontrolü
   if (cart.length === 0) {
